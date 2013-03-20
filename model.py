@@ -62,9 +62,6 @@ class Model:
         self.num_interesting += int(interesting)
 
         # update word counts for each unique word in title
-        tmp = extract_tokens(title)
-        if tmp is None:
-            print "extract_tokens({0}) yields None!!!!!".format(title)
         for word in extract_tokens(title):
             if word in stopwords:
                 continue
