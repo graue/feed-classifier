@@ -87,7 +87,8 @@ class Model:
         interesting_ratio = self.num_interesting / float(self.num_stories)
 
         words = extract_tokens(title)
-        probs = filter(None, [self._posterior_for(word) for word in words])
+        probs = filter(lambda x: x is not None,
+                       [self._posterior_for(word) for word in words])
         probs.sort(None, lambda p: abs(interesting_ratio - p))
         probs = probs[:12]
         if len(probs) < 2:
@@ -96,6 +97,6 @@ class Model:
         def make_nonzero(p):
             return 1 / float(self.num_stories + 1) if p == 0 else p
 
-        sum_of_logs = sum([math.log(make_nonzero(p))
-                           - math.log(make_nonzero(1 - p)) for p in probs])
+        sum_of_logs = sum([math.log(make_nonzero(1 - p))
+                           - math.log(make_nonzero(p)) for p in probs])
         return 1.0 / (math.exp(sum_of_logs) + 1)
