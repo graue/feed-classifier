@@ -173,4 +173,9 @@ stopwords = set([
     "yours",
     "yourself",
     "yourselves",
+    "s",
+    "nt",
+    "ve",
+    "d",
+    "re",
 ])
