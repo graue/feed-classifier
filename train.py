@@ -1,11 +1,13 @@
 import feedparser
 from model import Model
 
-FEED_URL = 'http://feeds.feedburner.com/newsyc20?format=xml'
+# Can be a file or URL
+FEED_SOURCE = 'http://feeds.feedburner.com/newsyc20?format=xml'
+
 MODEL_FILE = 'model.json'
 
 model = Model(MODEL_FILE)
-d = feedparser.parse(FEED_URL)
+d = feedparser.parse(FEED_SOURCE)
 
 for story in [entry for entry in d.entries if not model.seen_id(entry.id)]:
     print story.title
