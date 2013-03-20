@@ -15,6 +15,5 @@ interesting stories by running
 
     python predict.py
 
-I don't think it actually works yet.
-My data size is small, but even so, the probability values
-seem decidedly wonky.
+My data size is small, so it's not possible to see how well
+this works yet. You probably need to train it a lot.
