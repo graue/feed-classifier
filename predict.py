@@ -4,7 +4,7 @@ from model import Model
 
 # Can be a file or URL
 FEED_SOURCE = ('http://feeds.feedburner.com/newsyc20?format=xml'
-               if len(sys.argv) == 0 else sys.argv[1])
+               if len(sys.argv) < 2 else sys.argv[1])
 
 MODEL_FILE = 'model.json'
 
